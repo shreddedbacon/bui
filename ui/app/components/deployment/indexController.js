@@ -6,8 +6,8 @@ angular.module('deploymentIndex', [])
             $http.get('/deployments/' + $stateParams.name, config)
                 .success(function(data, status) {
                     $scope.manifest = jsyaml.load(data.manifest)
-                    for (var i = 0; i < $scope.manifest.jobs.length; i++) {
-                        $scope.instances_count += $scope.manifest.jobs[i].instances;
+                    for (var i = 0; i < $scope.manifest.instance_groups.length; i++) {
+                        $scope.instances_count += $scope.manifest.instance_groups[i].instances;
                     }
                 })
                 .error(function(data, status) {
