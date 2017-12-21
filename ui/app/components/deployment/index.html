@@ -1,6 +1,6 @@
 <section class="section">
     <div class="title-block">
-        <h3 class="title">Instances groups
+        <h3 class="title">Instance groups
       <div class="pull-right">
         {{instances_count}} vm(s)
       </div>
@@ -33,7 +33,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="job in manifest.instance_groups">
+                                <tr ng-repeat="job in manifest.jobs">
                                     <td>
                                         {{job.name}}
                                     </td>
@@ -46,6 +46,26 @@
                                     <td>
                                         <div ng-repeat="template in job.templates">
                                             {{template.name}}<br/>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {{getLifecycle(job.lifecycle)}}
+                                    </td>
+                                </tr>
+
+                                <tr ng-repeat="job in manifest.instance_groups">
+                                    <td>
+                                        {{job.name}}
+                                    </td>
+                                    <td>
+                                        {{job.instances}}
+                                    </td>
+                                    <td>
+                                        {{job.resource_pool}}
+                                    </td>
+                                    <td>
+                                        <div ng-repeat="jobs in job.jobs">
+                                            {{jobs.name}}<br/>
                                         </div>
                                     </td>
                                     <td>
